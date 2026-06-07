@@ -110,6 +110,9 @@ docker push yourusername/easyagentops-api:latest
 # Install Heroku CLI
 brew install heroku/brew/heroku
 
+# Create Procfile
+echo 'web: uv run uvicorn main:app --host 0.0.0.0 --port $PORT' > backend/Procfile
+
 # Login
 heroku login
 

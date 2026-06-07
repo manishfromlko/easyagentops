@@ -25,6 +25,7 @@ Complete guide to set up your local development environment for EasyAgentOps.
 - **Node.js**: v18.0.0 or higher
 - **npm**: v8.0.0 or higher (comes with Node.js)
 - **Python**: v3.11 or higher
+- **uv**: Latest version (Python package manager)
 - **Git**: v2.0.0 or higher
 
 ### Optional
@@ -65,7 +66,10 @@ curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # Install Python
-sudo apt-get install -y python3.11 python3.11-venv
+sudo apt-get install -y python3.11
+
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 #### Windows
@@ -125,28 +129,31 @@ rm -rf .next
 
 ## Backend Development
 
-### 1. Create Virtual Environment
+### 1. Install uv
 
-#### macOS/Linux
+#### macOS
 
 ```bash
-cd backend
-python3.11 -m venv venv
-source venv/bin/activate
+brew install uv
+```
+
+#### Linux
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 #### Windows
 
 ```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 ### 2. Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+cd backend
+uv sync
 ```
 
 ### 3. Create Environment File
@@ -182,23 +189,26 @@ API docs available at **http://localhost:8000/docs**
 ### 5. Useful Commands
 
 ```bash
-# Install development dependencies
-pip install -r requirements.txt
+# Install dependencies (creates .venv automatically)
+uv sync
+
+# Run the server with uv
+uv run python main.py
 
 # Install linting tools
-pip install flake8 black pylint
+uv pip install flake8 black pylint
 
 # Format code
-black .
+uv run black .
 
 # Check code quality
-flake8 .
+uv run flake8 .
 
-# Run tests (when available)
-pytest
+# Run tests
+uv run pytest
 
-# Deactivate virtual environment
-deactivate
+# Update dependencies
+uv sync --upgrade
 ```
 
 ## Docker Development
@@ -341,11 +351,9 @@ npm --version
 ### Python Virtual Environment Issues
 
 ```bash
-# Delete and recreate virtual environment
-rm -rf venv
-python3.11 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+# Resync and recreate virtual environment
+rm -rf .venv
+uv sync
 ```
 
 ### Port Already in Use

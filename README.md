@@ -38,6 +38,7 @@ easyagentops/
 ### Backend
 - **Framework**: FastAPI
 - **Language**: Python 3.11
+- **Package Manager**: uv (ultra-fast Python package installer)
 - **Server**: Uvicorn
 - **Deployment**: Docker containers
 
@@ -46,6 +47,7 @@ easyagentops/
 ### Prerequisites
 - Node.js 18+ (for frontend)
 - Python 3.11+ (for backend)
+- uv (fast Python package manager)
 - npm or yarn (for frontend package management)
 
 ### Frontend Setup
@@ -62,10 +64,8 @@ Visit http://localhost:3000 to see the frontend in action.
 
 ```bash
 cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python main.py
+uv sync
+uv run python main.py
 ```
 
 The backend API will be available at http://localhost:8000
@@ -90,8 +90,8 @@ npm run build
 
 ```bash
 cd backend
-pip install pytest
-pytest
+uv sync --extra dev
+uv run pytest
 ```
 
 ## Deployment

@@ -19,7 +19,7 @@ wheels/
 .installed.cfg
 *.egg
 .env
-.venv
+.venv/
 venv/
 ENV/
 .vscode/
@@ -28,3 +28,4 @@ ENV/
 *.swo
 *~
 .DS_Store
+*.lock

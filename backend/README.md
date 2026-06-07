@@ -10,6 +10,7 @@ A FastAPI-based backend service for the EasyAgentOps platform.
 - 🐳 Docker-ready
 - 📝 Type-safe with Pydantic
 - 🔌 RESTful API design
+- ⚡ Fast dependency management with uv
 
 ## Project Structure
 
@@ -26,32 +27,23 @@ backend/
 
 ### Prerequisites
 - Python 3.11 or higher
-- pip or poetry for package management
+- uv (fast Python package installer)
 
 ### Installation
 
 ```bash
-# Create virtual environment
-python -m venv venv
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-# On Windows:
-venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Copy environment file
-cp .env.example .env
+# Install dependencies and create virtual environment
+uv sync
 ```
 
 ### Development
 
 ```bash
 # Run the server
-python main.py
+uv run python main.py
 ```
 
 The API will be available at `http://localhost:8000`
@@ -86,30 +78,30 @@ CORS_ORIGINS=http://localhost:3000,https://easyagentops.in
 ### Running with Auto-Reload
 
 ```bash
-uvicorn main:app --reload
+uv run uvicorn main:app --reload
 ```
 
 ### Code Quality
 
 ```bash
 # Install linting tools
-pip install flake8 black pylint
+uv pip install flake8 black pylint
 
 # Format code
-black .
+uv run black .
 
 # Check code quality
-flake8 .
-pylint main.py
+uv run flake8 .
+uv run pylint main.py
 ```
 
 ### Testing
 
 ```bash
-pip install pytest pytest-asyncio
+uv pip install pytest pytest-asyncio
 
 # Run tests
-pytest
+uv run pytest
 ```
 
 ## Deployment
