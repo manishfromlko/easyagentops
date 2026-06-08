@@ -35,6 +35,9 @@ git push -u origin main
 3. Set the source to **GitHub Actions**
 4. Click **Save**
 
+> Important: Do not select a branch source such as `main`/`root` or `main`/`docs`.
+> This repo uses GitHub Actions deployment to publish the static site artifact from `frontend/out`.
+
 ### Step 3: Configure Custom Domain
 
 #### In GitHub
