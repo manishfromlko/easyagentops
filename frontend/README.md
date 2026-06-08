@@ -65,13 +65,13 @@ npm run build
 npm start
 ```
 
-### Static Export (for GitHub Pages)
+### Static Build (for GitHub Pages)
 
 ```bash
-npm run export
+npm run build
 ```
 
-The static files will be generated in the `out` directory.
+The static files are generated using `output: 'export'` in `next.config.js` and should be available in the export output directory.
 
 ## Pages
 

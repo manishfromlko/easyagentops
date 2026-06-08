@@ -120,8 +120,8 @@ npm start
 # Run linter
 npm run lint
 
-# Export as static site
-npm run export
+# Build static site
+npm run build
 
 # Clean build cache
 rm -rf .next

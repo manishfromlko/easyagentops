@@ -106,7 +106,7 @@ npm run dev      # Start development server
 npm run build    # Build for production
 npm start        # Start production server
 npm run lint     # Run ESLint
-npm run export   # Export as static site
+npm run export   # Alias for next build
 ```
 
 ### Backend
