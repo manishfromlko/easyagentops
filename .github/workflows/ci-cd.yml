@@ -74,4 +74,4 @@ jobs:
       
       - name: Run Flake8
         working-directory: backend
-        run: uv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        run: uv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=.venv

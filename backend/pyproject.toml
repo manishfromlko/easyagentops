@@ -32,5 +32,15 @@ target-version = ['py311']
 [tool.pylint.messages_control]
 disable = ["C0111", "R0913"]
 
+[tool.flake8]
+exclude = [
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+    "*/site-packages",
+]
+
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
